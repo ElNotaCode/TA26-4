@@ -22,8 +22,10 @@ public class Equipo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_equipos;
-	@Column(name="nombre_apellidos")
-	private String nombre_apellidos;
+	@Column(name="numero_serie")
+	private String numero_serie;
+	@Column(name="nombre")
+	private String nombre;
 
 	@ManyToOne
 	@JoinColumn(name="id_facultad")
@@ -36,11 +38,12 @@ public class Equipo {
 	public Equipo() {
 		
 	}
-	
-	public Equipo(int id_equipos, String nombre_apellidos, Facultad facultad, List<Equipo> listaReservas) {
-		//super();
+
+	public Equipo(int id_equipos, String numero_serie, String nombre, Facultad facultad, List<Equipo> listaReservas) {
+		super();
 		this.id_equipos = id_equipos;
-		this.nombre_apellidos = nombre_apellidos;
+		this.numero_serie = numero_serie;
+		this.nombre = nombre;
 		this.facultad = facultad;
 		this.listaReservas = listaReservas;
 	}
@@ -53,12 +56,20 @@ public class Equipo {
 		this.id_equipos = id_equipos;
 	}
 
-	public String getNombre_apellidos() {
-		return nombre_apellidos;
+	public String getNumero_serie() {
+		return numero_serie;
 	}
 
-	public void setNombre_apellidos(String nombre_apellidos) {
-		this.nombre_apellidos = nombre_apellidos;
+	public void setNumero_serie(String numero_serie) {
+		this.numero_serie = numero_serie;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Facultad getFacultad() {
@@ -81,8 +92,8 @@ public class Equipo {
 
 	@Override
 	public String toString() {
-		return "Equipo [id_equipos=" + id_equipos + ", nombre_apellidos=" + nombre_apellidos + ", facultad=" + facultad
-				+ ", listaReservas=" + listaReservas + "]";
+		return "Equipo [id_equipos=" + id_equipos + ", numero_serie=" + numero_serie + ", nombre=" + nombre
+				+ ", facultad=" + facultad + ", listaReservas=" + listaReservas + "]";
 	}
 	
 }

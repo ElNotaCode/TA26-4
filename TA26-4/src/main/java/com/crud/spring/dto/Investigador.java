@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,6 +27,10 @@ public class Investigador {
 	@Column(name="nombre_apellidos")
 	private String nombre_apellidos;
 	
+	@ManyToOne
+	@JoinColumn(name="id_facultad")
+	Facultad facultad;
+	
 	@OneToMany
 	@JoinColumn(name="id_investigadores")
 	List<Equipo> listaReservas;
@@ -34,11 +39,13 @@ public class Investigador {
 		
 	}
 
-	public Investigador(int id_investigadores, String dni, String nombre_apellidos, List<Equipo> listaReservas) {
+	public Investigador(int id_investigadores, String dni, String nombre_apellidos, Facultad facultad,
+			List<Equipo> listaReservas) {
 		//super();
 		this.id_investigadores = id_investigadores;
 		this.dni = dni;
 		this.nombre_apellidos = nombre_apellidos;
+		this.facultad = facultad;
 		this.listaReservas = listaReservas;
 	}
 
@@ -66,6 +73,14 @@ public class Investigador {
 		this.nombre_apellidos = nombre_apellidos;
 	}
 
+	public Facultad getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(Facultad facultad) {
+		this.facultad = facultad;
+	}
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "reserva")
 	public List<Equipo> getListaReservas() {
@@ -75,11 +90,11 @@ public class Investigador {
 	public void setListaReservas(List<Equipo> listaReservas) {
 		this.listaReservas = listaReservas;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Investigador [id_investigadores=" + id_investigadores + ", dni=" + dni + ", nombre_apellidos="
-				+ nombre_apellidos + ", listaReservas=" + listaReservas + "]";
+				+ nombre_apellidos + ", facultad=" + facultad + ", listaReservas=" + listaReservas + "]";
 	}
 	
 }
