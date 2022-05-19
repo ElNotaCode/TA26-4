@@ -46,8 +46,11 @@ public class ReservaController {
 				Reserva reserva_seleccionada = new Reserva();
 				Reserva reserva_actualizada = new Reserva();
 				
+				reserva_seleccionada.setComienzo(reserva.getComienzo());
+				reserva_seleccionada.setFin(reserva.getFin());
 				reserva_seleccionada.setEquipo(reserva.getEquipo());
 				reserva_seleccionada.setInvestigador(reserva.getInvestigador());
+				
 				
 				reserva_actualizada = reservaServiceImpl.updateReserva(reserva_seleccionada);
 				
