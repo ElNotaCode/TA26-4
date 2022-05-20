@@ -22,29 +22,31 @@ public class FacultadController {
 	@Autowired
 	FacultadServiceImpl facultadServiceImpl;
 	
-	//listar
+	//listar testeado OK
 		@GetMapping("/facultades")
 		public List<Facultad> listarFacultad(){
 			return facultadServiceImpl.listarFacultades();
 		}
-		//C
+		//C testeado OK
 		@PostMapping("/facultades")
 		public Facultad createFacultad(@RequestBody Facultad facultad) {
 			return facultadServiceImpl.createFacultad(facultad);
 		}
 		
-		//R
+		//R testeado OK
 		@GetMapping("/facultades/{id}")
 		public Facultad readFacultad(@PathVariable(name="id")int id) {
 			return facultadServiceImpl.readFacultad(id);
 		}
 		
-		//U
+		//U  resteado OK
 		@PutMapping("/facultades/{id}")
 		public Facultad updateFacultad(@PathVariable(name="id")int id,@RequestBody Facultad facultad) {
 			
 			Facultad facultad_seleccionada = new Facultad();
 			Facultad facultad_actualizada = new Facultad();
+			
+			facultad_seleccionada = facultadServiceImpl.readFacultad(id);
 			
 			facultad_seleccionada.setNombre(facultad.getNombre());
 			
@@ -53,7 +55,7 @@ public class FacultadController {
 			return facultad_actualizada;
 		}
 		
-		//D
+		//D testeado OK
 		@DeleteMapping("/facultades/{id}")
 		public void deleteFacultad(@PathVariable(name="id") int id) {
 			facultadServiceImpl.deleteFacultad(id);

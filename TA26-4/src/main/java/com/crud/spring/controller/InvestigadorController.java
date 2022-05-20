@@ -46,6 +46,8 @@ public class InvestigadorController {
 			Investigador investigador_seleccionado = new Investigador();
 			Investigador investigador_actualizado = new Investigador();
 			
+			investigador_seleccionado = InvestigadorServiceImpl.readInvestigador(id);
+			
 			investigador_seleccionado.setDni(investigador.getDni());
 			investigador_seleccionado.setNombre_apellidos(investigador.getNombre_apellidos());
 			investigador_seleccionado.setFacultad(investigador.getFacultad());

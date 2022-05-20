@@ -46,6 +46,8 @@ public class EquipoController {
 			Equipo equipo_seleccionado = new Equipo();
 			Equipo equipo_actualizado = new Equipo();
 			
+			equipo_seleccionado = equipoServiceImpl.readEquipo(id);
+			
 			equipo_seleccionado.setNumero_serie(equipo.getNumero_serie());
 			equipo_seleccionado.setNombre(equipo.getNombre());
 			equipo_seleccionado.setFacultad(equipo.getFacultad());
