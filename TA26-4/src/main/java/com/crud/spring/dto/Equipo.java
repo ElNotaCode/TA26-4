@@ -33,13 +33,13 @@ public class Equipo {
 	
 	@OneToMany
 	@JoinColumn(name="id_equipos")
-	List<Equipo> listaReservas;
+	List<Reserva> listaReservas;
 
 	public Equipo() {
 		
 	}
 
-	public Equipo(int id_equipos, String numero_serie, String nombre, Facultad facultad, List<Equipo> listaReservas) {
+	public Equipo(int id_equipos, String numero_serie, String nombre, Facultad facultad, List<Reserva> listaReservas) {
 		super();
 		this.id_equipos = id_equipos;
 		this.numero_serie = numero_serie;
@@ -81,12 +81,12 @@ public class Equipo {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "reserva")
-	public List<Equipo> getListaReservas() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reserva")
+	public List<Reserva> getListaReservas() {
 		return listaReservas;
 	}
 
-	public void setListaReservas(List<Equipo> listaReservas) {
+	public void setListaReservas(List<Reserva> listaReservas) {
 		this.listaReservas = listaReservas;
 	}
 
